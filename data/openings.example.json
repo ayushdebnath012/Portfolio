@@ -1,0 +1,63 @@
+{
+  "note": "Edit this file to post openings, then commit and push. Delete the two EXAMPLE entries below before going live. Fields: status must be 'open' or 'closed'. Dates are ISO (YYYY-MM-DD). 'deadline' may be null for rolling review.",
+  "openings": [
+    {
+      "id": "example-snn-encoding-2026",
+      "status": "open",
+      "title": "EXAMPLE — Undergraduate RA: Temporal Encoding for Spiking Networks",
+      "group": "Replace with the lab or group name",
+      "advisor": "Prof. [Advisor Name]",
+      "coAdvisor": "[PhD Student Name], PhD candidate",
+      "location": "Remote",
+      "mode": "Remote",
+      "commitment": "15–20 hrs/week",
+      "duration": "4–6 months",
+      "stipend": "Unpaid / credit-eligible",
+      "posted": "2026-07-15",
+      "deadline": "2026-08-15",
+      "tags": ["Spiking Neural Networks", "PyTorch", "Computer Vision"],
+      "summary": "This is placeholder text so you can see how a posting renders. Replace every field before publishing — do not leave a real professor's name attached to an example.",
+      "responsibilities": [
+        "Run and analyze training experiments on standard vision benchmarks.",
+        "Implement encoding variants and ablations in PyTorch.",
+        "Keep clean experiment logs and contribute to the write-up."
+      ],
+      "requirements": [
+        "Comfortable with Python and PyTorch.",
+        "Coursework in linear algebra and probability.",
+        "Prior exposure to deep learning; SNN experience is a plus, not a requirement."
+      ],
+      "applyEmail": "ayush.d@kgpian.iitkgp.ac.in",
+      "applyUrl": "",
+      "applyNote": "Email a CV and a short note on what you'd want to work on. Mention the posting title in the subject line."
+    },
+    {
+      "id": "example-neural-operators-2026",
+      "status": "closed",
+      "title": "EXAMPLE — Project Assistant: Neural Operators for Wave Equations",
+      "group": "Replace with the lab or group name",
+      "advisor": "Prof. [Advisor Name]",
+      "coAdvisor": "",
+      "location": "IIT Kharagpur",
+      "mode": "On-site",
+      "commitment": "10 hrs/week",
+      "duration": "One semester",
+      "stipend": "₹ — /month",
+      "posted": "2026-05-02",
+      "deadline": null,
+      "tags": ["PINNs", "Numerical Methods", "Scientific ML"],
+      "summary": "A second placeholder, marked closed so you can see how filled roles are displayed.",
+      "responsibilities": [
+        "Implement baseline FD/FEM solvers for comparison.",
+        "Benchmark neural operator variants against classical solvers."
+      ],
+      "requirements": [
+        "Background in PDEs and numerical methods.",
+        "Python; familiarity with JAX or PyTorch."
+      ],
+      "applyEmail": "ayush.d@kgpian.iitkgp.ac.in",
+      "applyUrl": "",
+      "applyNote": ""
+    }
+  ]
+}

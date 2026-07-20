@@ -1,0 +1,4 @@
+{
+  "note": "Live openings. Copy an entry from openings.example.json as a starting point, fill it in, then commit and push. Field reference is in README.md. status must be 'open' or 'closed'; dates are ISO (YYYY-MM-DD); deadline may be null for rolling review.",
+  "openings": []
+}

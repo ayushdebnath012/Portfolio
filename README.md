@@ -1,0 +1,90 @@
+# Portfolio — Ayush Debnath
+
+Next.js 16 (App Router) portfolio with a JSON-driven research openings board.
+Builds to fully static HTML, so it hosts anywhere for free.
+
+## Run it
+
+```bash
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # static site → ./out
+```
+
+## Editing content
+
+| What | Where |
+| --- | --- |
+| Bio, education, experience, projects, awards, skills | `data/profile.js` |
+| Research openings | `data/openings.json` |
+| Colors, spacing, typography | `app/globals.css` (tokens at the top) |
+
+Everything is data-driven — you shouldn't need to touch the components to
+change what the site says.
+
+## Posting a research opening
+
+Add an object to the `openings` array in `data/openings.json`, then commit and
+push. The board picks it up on the next build.
+
+```jsonc
+{
+  "id": "unique-slug-2026",        // must be unique; used as the React key
+  "status": "open",                 // "open" or "closed" — drives the badge + default filter
+  "title": "Undergraduate RA: <topic>",
+  "group": "Lab or group name",
+  "advisor": "Prof. Jane Doe",
+  "coAdvisor": "John Smith, PhD candidate",   // "" to omit
+  "location": "Remote",
+  "mode": "Remote",                 // Remote / Hybrid / On-site
+  "commitment": "15–20 hrs/week",
+  "duration": "4–6 months",
+  "stipend": "Unpaid / credit-eligible",
+  "posted": "2026-07-20",           // ISO, YYYY-MM-DD
+  "deadline": "2026-08-15",         // or null → displays "Rolling"
+  "tags": ["Topic A", "Topic B"],   // these auto-populate the Area filter
+  "summary": "One paragraph on the project and why it's interesting.",
+  "responsibilities": ["…", "…"],
+  "requirements": ["…", "…"],
+  "applyEmail": "ayush.d@kgpian.iitkgp.ac.in",
+  "applyUrl": "",                   // a form link; takes priority over applyEmail
+  "applyNote": "What to send when applying."
+}
+```
+
+Notes:
+
+- To close a role, flip `status` to `"closed"` — it stays visible under the
+  Closed/All filters as a record, greyed out, with the Apply button removed.
+- The Area filter builds itself from the `tags` across all postings.
+- Dates are formatted from the ISO string directly, without `Date` parsing, so
+  no timezone ever shifts a deadline by a day.
+
+`data/openings.json` starts empty, so the board shows its empty state until you
+post something. Two filled-in reference entries live in
+`data/openings.example.json` — copy one, edit it, paste it into the live file.
+That file is never imported by the site, so it can't leak a placeholder posting
+onto the page.
+
+## Deploying
+
+The build emits a static `./out` directory. No Node server needed at runtime.
+
+**GitHub Pages** (project site at `username.github.io/repo-name`):
+
+```bash
+BASE_PATH=/repo-name npm run build
+```
+
+Then publish `out/`. The `BASE_PATH` env var is required or CSS and links break
+on a project site — skip it only for a custom domain or a `username.github.io`
+root repo.
+
+**Vercel / Netlify / Cloudflare Pages**: point at the repo, build command
+`npm run build`, output directory `out`. No `BASE_PATH` needed.
+
+## Still to fill in
+
+- `profile.linkedin` in `data/profile.js` — **currently a guessed URL, verify it.**
+- `profile.scholar` — an empty string hides that footer link.
+- Drop your résumé at `public/Ayush_Debnath_Resume.pdf` if you want to link it.
