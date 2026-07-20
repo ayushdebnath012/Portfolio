@@ -623,6 +623,15 @@ ul {
   margin-bottom: 12px;
 }
 
+.opening-uni {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+
 .opening h2 {
   font-size: 1.24rem;
   margin-bottom: 8px;

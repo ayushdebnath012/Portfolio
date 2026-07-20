@@ -31,6 +31,7 @@ push. The board picks it up on the next build.
 {
   "id": "unique-slug-2026",        // must be unique; used as the React key
   "status": "open",                 // "open" or "closed" — drives the badge + default filter
+  "university": "Carnegie Mellon University",  // shown above the title; builds the University filter
   "title": "Undergraduate RA: <topic>",
   "group": "Lab or group name",
   "advisor": "Prof. Jane Doe",
@@ -56,7 +57,11 @@ Notes:
 
 - To close a role, flip `status` to `"closed"` — it stays visible under the
   Closed/All filters as a record, greyed out, with the Apply button removed.
-- The Area filter builds itself from the `tags` across all postings.
+- The University and Area filters build themselves from the `university` and
+  `tags` values across all postings — add a new university and its filter
+  button appears on its own.
+- **Any field left as `""` is hidden rather than rendered empty**, so omit what
+  you don't know yet instead of writing "TBD".
 - Dates are formatted from the ISO string directly, without `Date` parsing, so
   no timezone ever shifts a deadline by a day.
 

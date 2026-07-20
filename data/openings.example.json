@@ -4,6 +4,7 @@
     {
       "id": "example-snn-encoding-2026",
       "status": "open",
+      "university": "Carnegie Mellon University",
       "title": "EXAMPLE — Undergraduate RA: Temporal Encoding for Spiking Networks",
       "group": "Replace with the lab or group name",
       "advisor": "Prof. [Advisor Name]",
@@ -15,7 +16,11 @@
       "stipend": "Unpaid / credit-eligible",
       "posted": "2026-07-15",
       "deadline": "2026-08-15",
-      "tags": ["Spiking Neural Networks", "PyTorch", "Computer Vision"],
+      "tags": [
+        "Spiking Neural Networks",
+        "PyTorch",
+        "Computer Vision"
+      ],
       "summary": "This is placeholder text so you can see how a posting renders. Replace every field before publishing — do not leave a real professor's name attached to an example.",
       "responsibilities": [
         "Run and analyze training experiments on standard vision benchmarks.",
@@ -34,6 +39,7 @@
     {
       "id": "example-neural-operators-2026",
       "status": "closed",
+      "university": "Harvard University",
       "title": "EXAMPLE — Project Assistant: Neural Operators for Wave Equations",
       "group": "Replace with the lab or group name",
       "advisor": "Prof. [Advisor Name]",
@@ -45,7 +51,11 @@
       "stipend": "₹ — /month",
       "posted": "2026-05-02",
       "deadline": null,
-      "tags": ["PINNs", "Numerical Methods", "Scientific ML"],
+      "tags": [
+        "PINNs",
+        "Numerical Methods",
+        "Scientific ML"
+      ],
       "summary": "A second placeholder, marked closed so you can see how filled roles are displayed.",
       "responsibilities": [
         "Implement baseline FD/FEM solvers for comparison.",

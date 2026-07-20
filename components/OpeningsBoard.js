@@ -41,6 +41,9 @@ function Opening({ o }) {
     <article className={`opening${isOpen ? "" : " is-closed"}`}>
       <div className="opening-top">
         <div>
+          {o.university ? (
+            <div className="opening-uni">{o.university}</div>
+          ) : null}
           <h2>{o.title}</h2>
           {o.group ? (
             <div className="opening-advisors">{o.group}</div>
@@ -53,13 +56,20 @@ function Opening({ o }) {
 
       {(o.advisor || o.coAdvisor) && (
         <p className="opening-advisors">
-          {o.advisor && (
+          {o.advisor ? (
             <>
               Advised by <strong>{o.advisor}</strong>
+              {o.coAdvisor ? (
+                <>
+                  , with <strong>{o.coAdvisor}</strong>
+                </>
+              ) : null}
+            </>
+          ) : (
+            <>
+              Working with <strong>{o.coAdvisor}</strong>
             </>
           )}
-          {o.advisor && o.coAdvisor ? ", with " : ""}
-          {o.coAdvisor && <strong>{o.coAdvisor}</strong>}
         </p>
       )}
 
@@ -137,10 +147,17 @@ function Opening({ o }) {
 export default function OpeningsBoard({ openings }) {
   const [status, setStatus] = useState("open");
   const [tag, setTag] = useState(null);
+  const [uni, setUni] = useState(null);
 
   const tags = useMemo(() => {
     const all = new Set();
     openings.forEach((o) => (o.tags || []).forEach((t) => all.add(t)));
+    return [...all].sort();
+  }, [openings]);
+
+  const universities = useMemo(() => {
+    const all = new Set();
+    openings.forEach((o) => o.university && all.add(o.university));
     return [...all].sort();
   }, [openings]);
 
@@ -149,9 +166,10 @@ export default function OpeningsBoard({ openings }) {
       openings.filter((o) => {
         if (status !== "all" && o.status !== status) return false;
         if (tag && !(o.tags || []).includes(tag)) return false;
+        if (uni && o.university !== uni) return false;
         return true;
       }),
-    [openings, status, tag]
+    [openings, status, tag, uni]
   );
 
   const openCount = openings.filter((o) => o.status === "open").length;
@@ -175,6 +193,24 @@ export default function OpeningsBoard({ openings }) {
           </button>
         ))}
 
+        {universities.length > 0 && (
+          <>
+            <span className="filter-label" style={{ marginLeft: 16 }}>
+              University
+            </span>
+            {universities.map((u) => (
+              <button
+                key={u}
+                className="filter-btn"
+                aria-pressed={uni === u}
+                onClick={() => setUni(uni === u ? null : u)}
+              >
+                {u}
+              </button>
+            ))}
+          </>
+        )}
+
         {tags.length > 0 && (
           <>
             <span className="filter-label" style={{ marginLeft: 16 }}>
@@ -196,9 +232,18 @@ export default function OpeningsBoard({ openings }) {
 
       {visible.length === 0 ? (
         <div className="empty-state">
-          <strong>Nothing here right now.</strong>
-          Try clearing the filters — or check back later, since new positions go
-          up as projects get funded.
+          {openings.length === 0 ? (
+            <>
+              <strong>No openings posted yet.</strong>
+              New positions go up here as projects get funded — check back, or
+              email me if you want to be told when one opens.
+            </>
+          ) : (
+            <>
+              <strong>Nothing matches that filter.</strong>
+              Try a different status or research area to see the other postings.
+            </>
+          )}
         </div>
       ) : (
         <div className="openings-list">

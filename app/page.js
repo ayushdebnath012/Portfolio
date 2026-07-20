@@ -42,8 +42,9 @@ export default function Home() {
           <div className="hero-eyebrow">{profile.institute}</div>
           <h1>{profile.name}</h1>
           <p className="hero-role">
-            <strong>{profile.role}</strong> · Research intern at Purdue,
-            Stanford &amp; CMU
+            <strong>{profile.role}</strong>
+            {" · "}
+            Research intern at Purdue, Stanford &amp; CMU
           </p>
           <p className="hero-tagline">{profile.tagline}</p>
           <div className="hero-actions">
