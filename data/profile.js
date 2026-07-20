@@ -19,6 +19,20 @@ export const profile = {
   location: "Kharagpur, India",
 };
 
+// The site is a static export, so there's no server to receive form posts.
+// Applications are relayed to your inbox by Web3Forms.
+//
+//   1. Go to https://web3forms.com, enter ayush.d@kgpian.iitkgp.ac.in
+//   2. They email you an access key — paste it below
+//
+// No account or password needed, and the free tier is unlimited. Until the
+// key is set, the Apply button falls back to opening a pre-addressed email,
+// so the board keeps working either way.
+export const formConfig = {
+  accessKey: "",
+  endpoint: "https://api.web3forms.com/submit",
+};
+
 export const researchInterests = [
   "Spiking Neural Networks",
   "Neural Operators & PINNs",

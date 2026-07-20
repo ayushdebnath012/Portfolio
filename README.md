@@ -71,6 +71,31 @@ post something. Two filled-in reference entries live in
 That file is never imported by the site, so it can't leak a placeholder posting
 onto the page.
 
+## Turning on the application form
+
+The Apply button opens a form (name, email, institution, links, motivation)
+that emails you the submission. Because the site is a **static export there's
+no server to receive a POST**, so delivery goes through Web3Forms.
+
+1. Go to <https://web3forms.com> and enter your email — no account or password.
+2. They email you an access key.
+3. Paste it into `formConfig.accessKey` in `data/profile.js`.
+4. Rebuild and deploy.
+
+Until that key is set, the Apply button falls back to opening a pre-addressed
+email instead — the board stays usable either way, it just loses the form.
+
+The access key is **not a secret**: it identifies your form and only permits
+sending mail to the address you registered. It's meant to sit in client-side
+code, which is why it lives in `profile.js` rather than an env var.
+
+Each submission arrives with the posting title, its id and the university, so
+you can tell which role an applicant is answering. The form includes a
+honeypot field for spam; Web3Forms adds its own filtering on top.
+
+Swapping providers (Formspree, Getform, …) means changing `formConfig.endpoint`
+and the payload keys in `components/ApplyForm.js` — the rest is provider-agnostic.
+
 ## Deploying
 
 The build emits a static `./out` directory. No Node server needed at runtime.

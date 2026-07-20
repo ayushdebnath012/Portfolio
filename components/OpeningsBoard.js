@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import ApplyForm from "@/components/ApplyForm";
 
 const MONTHS = [
   "Jan", "Feb", "Mar", "Apr", "May", "Jun",
@@ -29,13 +30,6 @@ function Meta({ label, value }) {
 
 function Opening({ o }) {
   const isOpen = o.status === "open";
-  const applyHref = o.applyUrl
-    ? o.applyUrl
-    : o.applyEmail
-    ? `mailto:${o.applyEmail}?subject=${encodeURIComponent(
-        `Application — ${o.title}`
-      )}`
-    : null;
 
   return (
     <article className={`opening${isOpen ? "" : " is-closed"}`}>
@@ -121,16 +115,7 @@ function Opening({ o }) {
       )}
 
       <div className="apply-row">
-        {isOpen && applyHref ? (
-          <a
-            className="btn btn-primary"
-            href={applyHref}
-            target={o.applyUrl ? "_blank" : undefined}
-            rel="noreferrer"
-          >
-            Apply
-          </a>
-        ) : null}
+        {isOpen ? <ApplyForm opening={o} /> : null}
         <span className="apply-note">
           {isOpen
             ? o.applyNote || "Reach out with a CV and a short note."

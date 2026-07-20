@@ -772,6 +772,213 @@ ul {
   font-family: var(--font-serif);
 }
 
+/* ---------- apply modal ---------- */
+.modal {
+  width: min(560px, calc(100vw - 32px));
+  max-height: min(86vh, 760px);
+  padding: 0;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  background: var(--bg-elev);
+  color: var(--text);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal::backdrop {
+  background: rgba(0, 0, 0, 0.68);
+  backdrop-filter: blur(3px);
+}
+
+.modal[open] {
+  animation: modal-in 0.18s ease-out;
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+.modal-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 24px 18px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.modal-head h2 {
+  font-size: 1.1rem;
+  line-height: 1.35;
+}
+
+.modal-close {
+  background: transparent;
+  border: none;
+  color: var(--text-faint);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 4px;
+  transition: color 0.16s ease;
+  flex-shrink: 0;
+}
+
+.modal-close:hover {
+  color: var(--text);
+}
+
+.modal-body {
+  padding: 22px 24px 24px;
+  overflow-y: auto;
+}
+
+.form-intro {
+  font-size: 0.89rem;
+  color: var(--text-faint);
+  margin-bottom: 22px;
+}
+
+.field {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.field label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 7px;
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+}
+
+.field .req {
+  color: var(--accent);
+}
+
+.field .optional {
+  font-size: 0.74rem;
+  color: var(--text-faint);
+  font-weight: 400;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  font-family: inherit;
+  font-size: 0.92rem;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border-strong);
+  border-radius: 7px;
+  padding: 10px 12px;
+  transition: border-color 0.16s ease;
+}
+
+.field textarea {
+  resize: vertical;
+  line-height: 1.55;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--text-faint);
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.field input:disabled,
+.field textarea:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.field input:user-invalid,
+.field textarea:user-invalid {
+  border-color: #d97b6c;
+}
+
+.field .hint {
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  margin-top: 6px;
+}
+
+/* Visually hidden but still fillable by bots. */
+.botcheck {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.form-error {
+  font-size: 0.86rem;
+  color: #e08b7c;
+  background: rgba(217, 123, 108, 0.1);
+  border: 1px solid rgba(217, 123, 108, 0.28);
+  border-radius: 7px;
+  padding: 11px 13px;
+  margin-bottom: 18px;
+}
+
+.form-error a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.form-success {
+  text-align: center;
+  padding: 28px 12px 12px;
+}
+
+.form-success strong {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--green);
+  margin-bottom: 10px;
+}
+
+.form-success p {
+  color: var(--text-dim);
+  font-size: 0.92rem;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  padding-top: 6px;
+}
+
+.modal-actions .btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 480px) {
+  .modal-actions {
+    flex-direction: column-reverse;
+  }
+  .modal-actions .btn {
+    justify-content: center;
+  }
+}
+
 /* ---------- footer ---------- */
 .footer {
   border-top: 1px solid var(--border);
