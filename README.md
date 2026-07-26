@@ -57,16 +57,19 @@ Notes:
 
 - To close a role, flip `status` to `"closed"` — it stays visible under the
   Closed/All filters as a record, greyed out, with the Apply button removed.
-- The University and Area filters build themselves from the `university` and
-  `tags` values across all postings — add a new university and its filter
-  button appears on its own.
+- The University dropdown is driven by the top-level `universities` array in
+  the same file, so it still offers choices while the board is empty. Any
+  `university` named on a posting is merged in automatically, so you never have
+  to keep the two in sync by hand.
+- The Area filter builds itself from the `tags` across all postings. It and the
+  Status filter are hidden entirely when nothing is posted.
 - **Any field left as `""` is hidden rather than rendered empty**, so omit what
   you don't know yet instead of writing "TBD".
 - Dates are formatted from the ISO string directly, without `Date` parsing, so
   no timezone ever shifts a deadline by a day.
 
-`data/openings.json` starts empty, so the board shows its empty state until you
-post something. Two filled-in reference entries live in
+`data/openings.json` currently has an empty `openings` array — nothing is
+advertised, and the board shows its empty state until you post something. Two filled-in reference entries live in
 `data/openings.example.json` — copy one, edit it, paste it into the live file.
 That file is never imported by the site, so it can't leak a placeholder posting
 onto the page.

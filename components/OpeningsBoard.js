@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import ApplyForm from "@/components/ApplyForm";
+import { profile } from "@/data/profile";
 
 const MONTHS = [
   "Jan", "Feb", "Mar", "Apr", "May", "Jun",
@@ -129,10 +130,10 @@ function Opening({ o }) {
   );
 }
 
-export default function OpeningsBoard({ openings }) {
+export default function OpeningsBoard({ openings, universities: listed = [] }) {
   const [status, setStatus] = useState("open");
   const [tag, setTag] = useState(null);
-  const [uni, setUni] = useState(null);
+  const [uni, setUni] = useState("");
 
   const tags = useMemo(() => {
     const all = new Set();
@@ -140,11 +141,13 @@ export default function OpeningsBoard({ openings }) {
     return [...all].sort();
   }, [openings]);
 
+  // The curated list plus anything a posting names, so the dropdown still has
+  // options when the board is empty.
   const universities = useMemo(() => {
-    const all = new Set();
+    const all = new Set(listed);
     openings.forEach((o) => o.university && all.add(o.university));
     return [...all].sort();
-  }, [openings]);
+  }, [openings, listed]);
 
   const visible = useMemo(
     () =>
@@ -162,35 +165,44 @@ export default function OpeningsBoard({ openings }) {
   return (
     <>
       <div className="filter-bar">
-        <span className="filter-label">Status</span>
-        {[
-          ["open", `Open (${openCount})`],
-          ["closed", "Closed"],
-          ["all", "All"],
-        ].map(([value, label]) => (
-          <button
-            key={value}
-            className="filter-btn"
-            aria-pressed={status === value}
-            onClick={() => setStatus(value)}
-          >
-            {label}
-          </button>
-        ))}
-
         {universities.length > 0 && (
           <>
-            <span className="filter-label" style={{ marginLeft: 16 }}>
+            <label className="filter-label" htmlFor="uni-filter">
               University
+            </label>
+            <select
+              id="uni-filter"
+              className={`filter-select${uni ? " is-active" : ""}`}
+              value={uni}
+              onChange={(e) => setUni(e.target.value)}
+            >
+              <option value="">All universities</option>
+              {universities.map((u) => (
+                <option key={u} value={u}>
+                  {u}
+                </option>
+              ))}
+            </select>
+          </>
+        )}
+
+        {openings.length > 0 && (
+          <>
+            <span className="filter-label" style={{ marginLeft: 16 }}>
+              Status
             </span>
-            {universities.map((u) => (
+            {[
+              ["open", `Open (${openCount})`],
+              ["closed", "Closed"],
+              ["all", "All"],
+            ].map(([value, label]) => (
               <button
-                key={u}
+                key={value}
                 className="filter-btn"
-                aria-pressed={uni === u}
-                onClick={() => setUni(uni === u ? null : u)}
+                aria-pressed={status === value}
+                onClick={() => setStatus(value)}
               >
-                {u}
+                {label}
               </button>
             ))}
           </>
@@ -219,14 +231,21 @@ export default function OpeningsBoard({ openings }) {
         <div className="empty-state">
           {openings.length === 0 ? (
             <>
-              <strong>No openings posted yet.</strong>
-              New positions go up here as projects get funded — check back, or
-              email me if you want to be told when one opens.
+              <strong>
+                {uni
+                  ? `No openings at ${uni} right now.`
+                  : "No openings posted right now."}
+              </strong>
+              Nothing is being advertised at the moment. New positions go up
+              here as projects get funded — check back, or{" "}
+              <a href={`mailto:${profile.email}`}>email me</a> if you want to be
+              told when one opens.
             </>
           ) : (
             <>
               <strong>Nothing matches that filter.</strong>
-              Try a different status or research area to see the other postings.
+              Try another university, status, or research area to see the other
+              postings.
             </>
           )}
         </div>

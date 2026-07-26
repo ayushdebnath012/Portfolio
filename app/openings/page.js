@@ -24,7 +24,10 @@ export default function OpeningsPage() {
       </header>
 
       <div className="container" style={{ paddingBottom: 72 }}>
-        <OpeningsBoard openings={data.openings} />
+        <OpeningsBoard
+          openings={data.openings}
+          universities={data.universities}
+        />
       </div>
     </>
   );

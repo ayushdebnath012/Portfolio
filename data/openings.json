@@ -1,38 +1,12 @@
 {
-  "note": "Live openings. Copy an entry from openings.example.json as a starting point, fill it in, then commit and push. Field reference is in README.md. status must be 'open' or 'closed'; dates are ISO (YYYY-MM-DD); deadline may be null for rolling review. Empty-string fields are hidden automatically, so leave a field \"\" rather than writing TBD.",
-  "openings": [
-    {
-      "id": "cmu-world-models-policy-2026",
-      "status": "open",
-      "university": "Carnegie Mellon University",
-      "title": "Research Assistant: World Models for Robot Policy Learning",
-      "group": "Robotics Institute",
-      "advisor": "",
-      "coAdvisor": "Tarasha Khurana, PhD candidate, Robotics Institute",
-      "location": "Remote",
-      "mode": "Remote",
-      "commitment": "",
-      "duration": "",
-      "stipend": "",
-      "posted": "2026-07-20",
-      "deadline": null,
-      "tags": ["World Models", "Robot Learning", "Video Prediction", "PyTorch"],
-      "summary": "Work on learned world models for robot policy learning — training models that predict how a scene evolves, and using those predictions to drive action selection. The project sits close to recent work on fast world-action models, and involves both reproducing published baselines and running experiments on new problem formulations.",
-      "responsibilities": [
-        "Read and reproduce results from recent world-model and policy-learning papers.",
-        "Implement and benchmark model variants in PyTorch.",
-        "Run ablations and keep clean, reproducible experiment logs.",
-        "Discuss findings in regular meetings and contribute to write-ups."
-      ],
-      "requirements": [
-        "Strong Python and PyTorch; comfortable reading ML papers independently.",
-        "Background in deep learning; exposure to computer vision or robotics helps.",
-        "Able to work independently and report progress clearly.",
-        "Prior experience with video prediction or reinforcement learning is a plus, not a requirement."
-      ],
-      "applyEmail": "ayush.d@kgpian.iitkgp.ac.in",
-      "applyUrl": "",
-      "applyNote": "Email a CV and a short note on relevant work you've done. Mention the posting title in the subject line."
-    }
-  ]
+  "note": "Live openings. The board is intentionally empty right now — nothing is being advertised. To post a role, copy an entry from openings.example.json into \"openings\", fill it in, then commit and push. Field reference is in README.md. status must be 'open' or 'closed'; dates are ISO (YYYY-MM-DD); deadline may be null for rolling review. Empty-string fields are hidden automatically, so leave a field \"\" rather than writing TBD.",
+  "universitiesNote": "Drives the University dropdown on the openings page. Keep this list even when no roles are posted — it shows visitors which collaborations roles usually come from. Any university named on a posting is added to the dropdown automatically.",
+  "universities": [
+    "Carnegie Mellon University",
+    "Purdue University",
+    "Stanford University",
+    "Indian Institute of Science, Bangalore",
+    "IIT Kharagpur"
+  ],
+  "openings": []
 }
