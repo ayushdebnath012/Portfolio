@@ -11,6 +11,7 @@ import {
   coursework,
   responsibility,
 } from "@/data/profile";
+import { resumeHref } from "@/data/resume";
 
 function SectionHead({ num, title }) {
   return (
@@ -34,6 +35,8 @@ function Chips({ items }) {
 }
 
 export default function Home() {
+  const resume = resumeHref();
+
   return (
     <>
       {/* ---------- hero ---------- */}
@@ -51,6 +54,11 @@ export default function Home() {
             <Link href="/openings" className="btn btn-primary">
               Research openings
             </Link>
+            {resume ? (
+              <a href={resume} target="_blank" rel="noreferrer" className="btn">
+                Résumé
+              </a>
+            ) : null}
             <a href={`mailto:${profile.email}`} className="btn">
               Email me
             </a>

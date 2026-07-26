@@ -1,12 +1,16 @@
 import Link from "next/link";
 import { profile } from "@/data/profile";
+import { resumeHref } from "@/data/resume";
 
 export default function Footer() {
+  const resume = resumeHref();
+
   const links = [
     { label: "Email", href: `mailto:${profile.email}` },
     { label: "LinkedIn", href: profile.linkedin },
     profile.github && { label: "GitHub", href: profile.github },
     profile.scholar && { label: "Google Scholar", href: profile.scholar },
+    resume && { label: "Résumé", href: resume },
   ].filter(Boolean);
 
   return (
