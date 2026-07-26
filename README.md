@@ -99,19 +99,37 @@ honeypot field for spam; Web3Forms adds its own filtering on top.
 Swapping providers (Formspree, Getform, …) means changing `formConfig.endpoint`
 and the payload keys in `components/ApplyForm.js` — the rest is provider-agnostic.
 
+## The résumé link
+
+Drop a PDF at `public/Ayush_Debnath_Resume.pdf` (the path is `profile.resume`
+in `data/profile.js`) and a Résumé button appears in the hero and the footer.
+
+The check happens at build time in `data/resume.js`: if the file isn't there,
+the href resolves to `""` and neither link renders, so the site can't point at
+a missing PDF. Rebuild after adding it — a static export can't notice new files
+on its own.
+
 ## Deploying
 
-The build emits a static `./out` directory. No Node server needed at runtime.
-
-**GitHub Pages** (project site at `username.github.io/repo-name`):
+Live at **<https://ayushdebnath012.github.io/Portfolio/>**, served from the
+`gh-pages` branch.
 
 ```bash
-BASE_PATH=/repo-name npm run build
+npm run deploy
 ```
 
-Then publish `out/`. The `BASE_PATH` env var is required or CSS and links break
-on a project site — skip it only for a custom domain or a `username.github.io`
-root repo.
+That builds with `BASE_PATH=/Portfolio` and force-pushes `out/` to `gh-pages`.
+The branch is generated output only — never commit to it by hand, the next
+deploy overwrites it. For a custom domain, clear the base path:
+
+```bash
+BASE_PATH= npm run deploy
+```
+
+Two things that will silently break a GitHub Pages deploy if they go missing:
+`public/.nojekyll` (without it Jekyll drops the whole `_next/` directory, so
+the site loads with no CSS or JS) and `BASE_PATH` (without it every asset URL
+points at the domain root and 404s on a project site).
 
 **Vercel / Netlify / Cloudflare Pages**: point at the repo, build command
 `npm run build`, output directory `out`. No `BASE_PATH` needed.
@@ -120,4 +138,7 @@ root repo.
 
 - `profile.linkedin` in `data/profile.js` — **currently a guessed URL, verify it.**
 - `profile.scholar` — an empty string hides that footer link.
-- Drop your résumé at `public/Ayush_Debnath_Resume.pdf` if you want to link it.
+- `public/Ayush_Debnath_Resume.pdf` — the Résumé button stays hidden until it's
+  there. Add it, then `npm run deploy`.
+- `formConfig.accessKey` in `data/profile.js` — until it's set, Apply falls back
+  to a mailto link.
