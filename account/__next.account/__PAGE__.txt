@@ -1,0 +1,6 @@
+1:"$Sreact.fragment"
+2:I[51887,["/Portfolio/_next/static/chunks/306rqprf434kv.js","/Portfolio/_next/static/chunks/14mrh2-p_w84d.js","/Portfolio/_next/static/chunks/41bkfu0j8a688.js"],"default"]
+3:I[97367,["/Portfolio/_next/static/chunks/306rqprf434kv.js","/Portfolio/_next/static/chunks/14mrh2-p_w84d.js"],"OutletBoundary"]
+4:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[[["$","header",null,{"className":"page-header","children":["$","div",null,{"className":"container","children":[["$","h1",null,{"children":"Log in or sign up"}],["$","p",null,{"children":"Save your details once so applications arrive pre-filled, and get an email whenever a new position goes up. Signing up takes one click and no password."}]]}]}],["$","div",null,{"className":"container account-wrap","children":["$","$L2",null,{}]}]],[["$","script","script-0",{"src":"/Portfolio/_next/static/chunks/41bkfu0j8a688.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"KvKHvmyoiC4FVP6UYVWDe"}
+5:null
