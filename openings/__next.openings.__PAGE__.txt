@@ -1,0 +1,6 @@
+1:"$Sreact.fragment"
+2:I[75405,["/Portfolio/_next/static/chunks/3rdqn8rx95pw7.js","/Portfolio/_next/static/chunks/14mrh2-p_w84d.js","/Portfolio/_next/static/chunks/2zz0ke2wnohyu.js"],"default"]
+3:I[97367,["/Portfolio/_next/static/chunks/3rdqn8rx95pw7.js","/Portfolio/_next/static/chunks/14mrh2-p_w84d.js"],"OutletBoundary"]
+4:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[[["$","header",null,{"className":"page-header","children":["$","div",null,{"className":"container","children":[["$","h1",null,{"children":"Research Openings"}],["$","p",null,{"children":"Positions on research projects I'm involved with — typically working under a faculty advisor alongside a PhD student. Roles are listed with the advisor, the time commitment, and what background helps. If something fits, write to me directly."}]]}]}],["$","div",null,{"className":"container","style":{"paddingBottom":72},"children":["$","$L2",null,{"openings":[],"universities":["Carnegie Mellon University","Purdue University","Stanford University","Indian Institute of Science, Bangalore","IIT Kharagpur"]}]}]],[["$","script","script-0",{"src":"/Portfolio/_next/static/chunks/2zz0ke2wnohyu.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"csrk5ogZ3BjH9hhVineKx"}
+5:null
