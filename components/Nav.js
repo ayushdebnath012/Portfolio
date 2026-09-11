@@ -19,6 +19,7 @@ export default function Nav() {
           <Link href="/#about" className="hide-sm">
             About
           </Link>
+          <Link href="/publications">Publications</Link>
           <Link href="/openings" className="nav-cta">
             Openings
           </Link>

@@ -140,6 +140,11 @@ export default function Home() {
               <article className="card" key={p.title}>
                 <h3>{p.title}</h3>
                 <p className="card-blurb">{p.blurb}</p>
+                {p.link ? (
+                  <Link href={p.link.href} className="card-link">
+                    {p.link.label} →
+                  </Link>
+                ) : null}
                 <details>
                   <summary>Details</summary>
                   <ul className="exp-points">
@@ -158,7 +163,7 @@ export default function Home() {
       {/* ---------- highlights ---------- */}
       <section className="section" id="highlights">
         <div className="container">
-          <SectionHead num="04" title="Awards & Conferences" />
+          <SectionHead num="04" title="Awards" />
           <div className="highlight-list">
             {highlights.map((h) => (
               <div className="highlight" key={h.label}>

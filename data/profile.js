@@ -198,6 +198,7 @@ export const projects = [
     blurb:
       "Accepted at IEEE GLOBECOM 2026 (SAC E-Health). A federated framework that fuses medical imaging with clinical text while patient data stays decentralized.",
     tags: ["Federated Learning", "Multimodal", "Explainability", "Clinical AI"],
+    link: { label: "Read the full write-up", href: "/publications#omnimed-fl" },
     points: [
       "Combines medical imaging and clinical text in a federated setup, so training never requires pooling patient data across sites.",
       "Achieves 0.956 Macro-F1 under non-IID settings — 99.1% of the centralized model's performance.",
@@ -265,25 +266,13 @@ export const projects = [
   },
 ];
 
+// Awards only — papers and conference presentations live in `publications`
+// and `presentations` below and get their own page.
 export const highlights = [
-  {
-    label: "Paper — IEEE GLOBECOM 2026 (SAC E-Health)",
-    detail:
-      "OmniMed-FL: A Robust Multimodal Federated Learning Framework for Clinical Diagnosis. 0.956 Macro-F1 under non-IID settings, retaining 99.1% of centralized performance.",
-  },
   {
     label: "Silver — Open IIT OpenSoft 2025",
     detail:
       "AI-powered HR chatbot for employee well-being monitoring, built with GPT-4, DistilBERT, SHAP, Next.js, FastAPI and PostgreSQL.",
-  },
-  {
-    label: "Poster — CASML 2024, IISc Bangalore",
-    detail:
-      "Presented on Physics-Informed Neural Networks at the International Conference on Applied AI and Scientific Machine Learning, with a pre-conference workshop.",
-  },
-  {
-    label: "Silver — Open IIT Data Analytics 2024",
-    detail: "Led a team of 20 at the IIT Kharagpur inter-hall competition.",
   },
   {
     label: "JEE Advanced 2022 — AIR 4708",
@@ -300,6 +289,74 @@ export const highlights = [
   {
     label: "Atmadeep Young Scholars Award 2018",
     detail: "Awarded by The Times of India; ranked among the top 20 students in the state.",
+  },
+];
+
+// Papers. Each entry becomes a full card on /publications; `id` is the anchor
+// (so /publications#omnimed-fl deep-links to it). Any link left "" is hidden.
+export const publications = [
+  {
+    id: "omnimed-fl",
+    title:
+      "OmniMed-FL: A Robust Multimodal Federated Learning Framework for Clinical Diagnosis",
+    // TODO: paste the author list exactly as it appears on the paper
+    authors: "",
+    venue: "IEEE GLOBECOM 2026",
+    venueLong: "IEEE Global Communications Conference",
+    track: "Selected Areas in Communications — E-Health",
+    date: "Dec 2026",
+    status: "Accepted",
+    tags: [
+      "Federated Learning",
+      "Multimodal Learning",
+      "Medical Imaging",
+      "Clinical NLP",
+      "Explainability",
+    ],
+    summary: [
+      `Clinical diagnosis rarely rests on one kind of evidence. A radiologist reads the scan alongside the referral note, the history and the labs, and a model that wants to do the same needs both imaging and text. Those records are also the most tightly guarded data a hospital holds, so pooling them across institutions to train one large model is usually off the table.`,
+      `Federated learning offers a way around this: hospitals train a shared model collaboratively and only model updates ever leave a site, never a patient record. But most federated work in healthcare is single-modality, and real deployments are far from the tidy setting most methods assume — every site has a different patient mix, different scanners and different documentation habits, so the data across clients is strongly non-IID.`,
+      `OmniMed-FL is a multimodal federated learning framework that combines medical imaging with clinical text for diagnosis while keeping every site's patient data decentralized, and that is built to be robust to exactly that heterogeneity. Under non-IID client splits it reaches a Macro-F1 of 0.956 — 99.1% of what a centralized model trained on the pooled data achieves — so the privacy constraint costs almost nothing in accuracy.`,
+      `A diagnostic model is only useful if a clinician can check it. The framework therefore pairs each prediction with an explanation and retrieves the supporting evidence, so its output reads as a case for a diagnosis rather than a verdict — the form that clinical decision support actually needs.`,
+    ],
+    stats: [
+      { value: "0.956", label: "Macro-F1 under non-IID client splits" },
+      { value: "99.1%", label: "of centralized-model performance retained" },
+      { value: "2", label: "modalities fused: imaging + clinical text" },
+    ],
+    contributions: [
+      "A federated training framework that fuses medical imaging and clinical text for diagnosis without centralizing any patient data.",
+      "Robustness to non-IID data across participating sites — the realistic case where each hospital's population, equipment and documentation differ.",
+      "Explainability and evidence retrieval built into the pipeline, so predictions come with a rationale a clinician can inspect.",
+    ],
+    results: [
+      "0.956 Macro-F1 under non-IID settings.",
+      "99.1% of the performance of a centralized model trained on pooled data — a near-zero privacy penalty.",
+      "Evaluated on combined imaging and clinical-text inputs, not a single modality.",
+    ],
+    // Paste URLs as they become available; each button appears only when set.
+    links: { paper: "", code: "", slides: "", poster: "" },
+  },
+];
+
+// Posters and talks. Shorter cards, same page.
+export const presentations = [
+  {
+    id: "casml-2024",
+    title: "Physics-Informed Neural Networks — research poster",
+    type: "Poster",
+    venue: "CASML 2024",
+    venueLong:
+      "International Conference on Applied AI and Scientific Machine Learning",
+    location: "IISc Bangalore",
+    date: "Dec 2024",
+    tags: ["PINNs", "Scientific Machine Learning"],
+    points: [
+      "Presented a research poster on Physics-Informed Neural Networks — embedding governing physical equations into the training of neural networks for scientific and engineering problems.",
+      "Attended the pre-conference workshop on Applied AI and Scientific Machine Learning, covering recent physics-informed and data-driven methods.",
+      "The groundwork for the later neural-PDE-solver work on elastic wave propagation at Stanford.",
+    ],
+    links: { poster: "" },
   },
 ];
 

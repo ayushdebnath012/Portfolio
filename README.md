@@ -16,11 +16,23 @@ npm run build    # static site → ./out
 | What | Where |
 | --- | --- |
 | Bio, education, experience, projects, awards, skills | `data/profile.js` |
+| Papers and conference presentations (the Publications page) | `publications` / `presentations` in `data/profile.js` |
 | Research openings | `data/openings.json` |
 | Colors, spacing, typography | `app/globals.css` (tokens at the top) |
 
 Everything is data-driven — you shouldn't need to touch the components to
 change what the site says.
+
+## Adding a paper or talk
+
+The Publications page is built from two arrays in `data/profile.js`:
+`publications` (full cards: summary paragraphs, a stat strip, contributions,
+results) and `presentations` (compact cards for posters and talks). Each
+entry's `id` doubles as its anchor, so `/publications#omnimed-fl` deep-links
+to that paper — the OmniMed-FL project card on the home page uses this.
+
+`links` holds `paper` / `code` / `slides` / `poster` URLs; leave one `""` and
+its button is hidden. `authors` is hidden the same way until it's filled in.
 
 ## Posting a research opening
 
