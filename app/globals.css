@@ -154,8 +154,12 @@ ul {
   white-space: nowrap;
 }
 
-.nav-brand span {
+.nav-brand .brand-dot {
   color: var(--accent);
+}
+
+.nav-brand .brand-short {
+  display: none;
 }
 
 .nav-links {
@@ -188,11 +192,24 @@ ul {
 
 @media (max-width: 720px) {
   .nav-links {
-    gap: 16px;
+    gap: 14px;
     font-size: 0.82rem;
   }
   .nav-links a.hide-sm {
     display: none;
+  }
+  .nav-brand .brand-full {
+    display: none;
+  }
+  .nav-brand .brand-short {
+    display: inline;
+  }
+}
+
+@media (max-width: 400px) {
+  .nav-links {
+    gap: 12px;
+    font-size: 0.78rem;
   }
 }
 
