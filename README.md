@@ -101,8 +101,9 @@ and the payload keys in `components/ApplyForm.js` — the rest is provider-agnos
 
 ## The résumé link
 
-Drop a PDF at `public/Ayush_Debnath_Resume.pdf` (the path is `profile.resume`
-in `data/profile.js`) and a Résumé button appears in the hero and the footer.
+The PDF lives at `public/Ayush_Debnath_Resume.pdf` (the path is `profile.resume`
+in `data/profile.js`); while it's there a Résumé button appears in the hero and
+the footer. To update it, overwrite the file and redeploy.
 
 The check happens at build time in `data/resume.js`: if the file isn't there,
 the href resolves to `""` and neither link renders, so the site can't point at
@@ -138,7 +139,5 @@ points at the domain root and 404s on a project site).
 
 - `profile.linkedin` in `data/profile.js` — **currently a guessed URL, verify it.**
 - `profile.scholar` — an empty string hides that footer link.
-- `public/Ayush_Debnath_Resume.pdf` — the Résumé button stays hidden until it's
-  there. Add it, then `npm run deploy`.
 - `formConfig.accessKey` in `data/profile.js` — until it's set, Apply falls back
   to a mailto link.

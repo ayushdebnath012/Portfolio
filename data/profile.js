@@ -4,17 +4,19 @@
 export const profile = {
   name: "Ayush Debnath",
   shortName: "Ayush",
-  role: "Dual Degree (B.Tech + M.Tech), Mechanical Engineering",
+  role: "B.Tech (Hons.) Mechanical Engineering + M.Tech Manufacturing Science & Engineering",
   institute: "IIT Kharagpur",
+  // Short line after the role in the hero — where you are right now.
+  headline: "Research intern at CMU & Stanford",
   tagline:
-    "I work on making neural networks efficient and physically grounded — spiking networks for low-latency vision, neural operators for PDEs, and multimodal models for the field.",
+    "I work on making neural networks efficient, physically grounded and trustworthy — benchmarking video world models for robotics, spiking networks for 3D perception, neural operators for PDEs, and multimodal models for clinical and field diagnosis.",
   email: "ayush.d@kgpian.iitkgp.ac.in",
   // TODO: paste your full LinkedIn URL here
   linkedin: "https://www.linkedin.com/in/ayush-debnath/",
   github: "https://github.com/ayushdebnath012",
   // TODO: add if you want it shown; leave "" to hide the link
   scholar: "",
-  // Drop a PDF at public/Ayush_Debnath_Resume.pdf to enable the résumé button
+  // The PDF at public/Ayush_Debnath_Resume.pdf enables the résumé button
   resume: "/Ayush_Debnath_Resume.pdf",
   location: "Kharagpur, India",
 };
@@ -34,25 +36,27 @@ export const formConfig = {
 };
 
 export const researchInterests = [
+  "World Models & Robot Learning",
   "Spiking Neural Networks",
   "Neural Operators & PINNs",
-  "Efficient Inference",
   "Vision–Language Models",
+  "Federated Learning",
+  "Efficient Inference",
   "Scientific Machine Learning",
-  "Interpretability",
 ];
 
 export const about = [
-  `I'm a dual-degree student at IIT Kharagpur working across the boundary between machine learning and the physical sciences. Most of my research asks a version of the same question: how do we get neural networks to do more with less — less latency, less data, or less disregard for the physics of the problem?`,
-  `Right now that means three threads in parallel: temporal encoding for spiking networks at Purdue, neural PDE solvers for elastic wave propagation at Stanford, and compositional structure in learned representations at CMU. My bachelor thesis takes the applied route — a vision–language pipeline for crop stress detection that has to survive contact with real farms.`,
+  `I'm a dual-degree student at IIT Kharagpur working across the boundary between machine learning and the physical sciences. Most of my research asks a version of the same question: how do we get neural networks to do more with less — less latency, less data, less private information leaving the device, or less disregard for the physics of the problem?`,
+  `Right now that means evaluating video world models for robot learning at CMU's Robotics Institute, training-free SVG generation with diffusion and vision–language models in Zico Kolter's group, and neural PDE solvers for elastic wave propagation at Stanford. Earlier this year I built Adaptive Spiking PointNet at Purdue — an anytime 3D point-cloud classifier that decides for itself how many temporal slices it needs — and OmniMed-FL, a multimodal federated learning framework for clinical diagnosis, was accepted at IEEE GLOBECOM 2026. My bachelor thesis took the applied route: a vision–language pipeline for crop stress detection that had to survive contact with real farms.`,
 ];
 
 export const education = [
   {
-    program: "Dual Degree (B.Tech + M.Tech), Mechanical Engineering",
+    program:
+      "Dual Degree — B.Tech (Hons.) Mechanical Engineering + M.Tech Manufacturing Science & Engineering",
     institution: "Indian Institute of Technology Kharagpur",
-    score: "CGPA 7.99 / 10",
-    year: "Present",
+    score: "CGPA 8.03 / 10",
+    year: "2027",
   },
   {
     program: "All India Senior School Certificate Examination (Class XII)",
@@ -71,17 +75,46 @@ export const education = [
 export const experience = [
   {
     title: "Research Intern",
+    org: "Carnegie Mellon University",
+    advisor: "Mosam Dabhi, PhD · Prof. Simon Lucey · Prof. László Jeni",
+    dept: "Robotics Institute",
+    period: "Jul 2026 — Present",
+    current: true,
+    tags: ["Video World Models", "Robot Learning", "VLA Models", "Benchmarking"],
+    points: [
+      "Running reproducible evaluations of video world models across WorldBench, WorldArena and Omni-WorldBench, identifying gaps in physical-state estimation, causal consistency and downstream-task performance.",
+      "Building Python pipelines that validate benchmark data, compare model results, generate publication-ready figures and tables, and keep the analysis deterministic through automated tests.",
+      "Designing evaluation protocols for state-aware robotic policies — benchmarking world models, vision-language-action models and diffusion policies across physical-reasoning and control tasks.",
+    ],
+  },
+  {
+    title: "Research Intern",
     org: "Purdue University",
     advisor: "Prof. Sayeed Shafayet Chowdhury",
     dept: "Department of Computer Science",
-    period: "Nov 2025 — Present",
-    current: true,
-    tags: ["Spiking Neural Networks", "PyTorch", "Efficient Inference"],
+    period: "Nov 2025 — Aug 2026",
+    current: false,
+    tags: ["Spiking Neural Networks", "3D Point Clouds", "Anytime Inference", "PyTorch"],
     points: [
-      "Investigating Spiking Neural Networks (SNNs) with an emphasis on low-latency temporal encoding for vision tasks.",
-      "Working on DCT-based encoding (DCT-SNN) to distribute spatial information over time and reduce inference latency.",
-      "Exploring surrogate-gradient training for deep SNNs using leaky integrate-and-fire (LIF) neuron dynamics.",
-      "Evaluating accuracy–latency trade-offs on standard image classification benchmarks for efficient inference systems.",
+      "Developed Adaptive Spiking PointNet (ASP) for energy-efficient 3D point-cloud recognition on ModelNet40, built on LIF neurons and temporal spiking computation.",
+      "Designed an active slice-selection mechanism for anytime inference that processes only 2.4 of 16 temporal slices on average while maintaining strong classification performance.",
+      "Reached 89.10% on ModelNet40 and 93.28% on ModelNet10, outperforming fixed-order baselines at a 24.5% mean firing rate.",
+      "Implemented surrogate-gradient training, cross-attention-based slice selection and firing-rate regularization to tune the accuracy–latency–energy trade-off.",
+    ],
+  },
+  {
+    title: "Research Intern",
+    org: "Carnegie Mellon University",
+    advisor: "Prof. Zico Kolter",
+    dept: "School of Computer Science",
+    period: "Oct 2025 — Present",
+    current: true,
+    tags: ["Diffusion Models", "Vision–Language Models", "Vector Graphics", "DiffVG"],
+    points: [
+      "Developed a training-free SVG generation and editing pipeline that uses pretrained diffusion models and frozen vision–language models to turn raster concepts into editable vector graphics.",
+      "Designed the DiffuSVG workflow: diffusion handles image-space generation, then a VLM extracts shapes, colours, positions and z-order to emit compact SVG markup.",
+      "Integrated CairoSVG, DiffVG, CLIP and DINO-based evaluation and refinement, enabling render–compare–refine iterations.",
+      "Achieved 92% valid SVG generation at roughly 3.5 elements per SVG, and documented the limitations on complex shapes.",
     ],
   },
   {
@@ -93,40 +126,25 @@ export const experience = [
     current: true,
     tags: ["PINNs", "Fourier Neural Operators", "Geophysics"],
     points: [
-      "Developing Physics-Informed Neural Networks and Fourier Neural Operators for elastic wave modelling.",
-      "Working on neural PDE solvers for elastic wave equations with embedded physical constraints and symmetries.",
-      "Comparing learning-based solvers with classical numerical methods (FD/FEM) on accuracy and stability.",
-      "Applying models to problems in computational geophysics and seismic simulation using a data-driven approach.",
+      "Developing Physics-Informed Neural Networks (PINNs) and Fourier Neural Operators (FNOs) for elastic wave-propagation PDEs with governing physical constraints.",
+      "Benchmarking learning-based PDE solvers against finite-difference and finite-element methods on accuracy, stability and physical consistency.",
+      "Implemented physics-informed losses that combine governing-equation residuals with initial and boundary conditions to keep predictions physically valid.",
+      "Investigating FNO-based operator learning as a fast surrogate for wave dynamics across varying initial and boundary conditions.",
     ],
   },
   {
-    title: "Research Intern",
-    org: "Carnegie Mellon University",
-    advisor: "Prof. Zico Kolter",
-    dept: "School of Computer Science",
-    period: "Oct 2025 — Present",
-    current: true,
-    tags: ["Compositional Structure", "Interpretability", "Generative Models"],
-    points: [
-      "Studying additive and compositional structure in machine learning models, inspired by recent theoretical work.",
-      "Working on structured representations using SVG-like abstractions for learning and generative modelling tasks.",
-      "Analyzing interactions between symbolic structure and continuous representations in modern ML systems.",
-      "Contributing to exploratory research connecting geometry, program structure, and interpretability methods.",
-    ],
-  },
-  {
-    title: "Bachelor Thesis Project — I",
+    title: "Bachelor Thesis Project",
     org: "IIT Kharagpur",
     advisor: "Prof. Sudip Misra",
     dept: "Department of Computer Science and Engineering",
-    period: "Ongoing",
-    current: true,
+    period: "Apr 2025 — Jun 2026",
+    current: false,
     tags: ["VLM", "LLM", "Flutter", "Firebase"],
     points: [
-      "Designing a multimodal pipeline using Vision–Language and Large Language Models for crop stress detection.",
-      "Using VLMs to extract semantic visual cues from crop images — leaf discoloration, texture, disease indicators.",
-      "Integrating an LLM reasoning layer to combine visual outputs with contextual metadata and generate diagnoses.",
-      "Building a Flutter application with a Firebase backend for real-time image upload and natural-language feedback.",
+      "Developed a multimodal crop-diagnosis framework combining VLMs, LLMs and agronomic metadata for automated crop-stress and disease assessment.",
+      "Designed a vision–language pipeline to extract semantic indicators — leaf discoloration, lesions, texture variations and other disease-related visual patterns.",
+      "Integrated an LLM reasoning module that fuses visual evidence with contextual and sensor information into interpretable diagnoses and actionable recommendations.",
+      "Built an end-to-end Flutter application on a Firebase backend for real-time image capture, inference and natural-language feedback.",
     ],
   },
   {
@@ -176,6 +194,28 @@ export const experience = [
 
 export const projects = [
   {
+    title: "OmniMed-FL — Multimodal Federated Learning for Clinical Diagnosis",
+    blurb:
+      "Accepted at IEEE GLOBECOM 2026 (SAC E-Health). A federated framework that fuses medical imaging with clinical text while patient data stays decentralized.",
+    tags: ["Federated Learning", "Multimodal", "Explainability", "Clinical AI"],
+    points: [
+      "Combines medical imaging and clinical text in a federated setup, so training never requires pooling patient data across sites.",
+      "Achieves 0.956 Macro-F1 under non-IID settings — 99.1% of the centralized model's performance.",
+      "Includes explainability and evidence retrieval so predictions can support, rather than replace, clinical decision-making.",
+    ],
+  },
+  {
+    title: "AI-Powered HR Chatbot — Open IIT OpenSoft 2025",
+    blurb:
+      "Silver medal. An HR assistant that monitors employee well-being from conversations, flags at-risk employees, and explains why.",
+    tags: ["GPT-4", "DistilBERT", "SHAP", "Next.js", "FastAPI", "PostgreSQL"],
+    points: [
+      "Won Silver in Open IIT OpenSoft 2025 with a chatbot for employee engagement, well-being monitoring and personalised conversations.",
+      "Integrated GPT-4 for dialogue, DistilBERT sentiment analysis and SHAP-based explainability to identify at-risk employees and generate context-aware HR interactions.",
+      "Built the full stack on Next.js, FastAPI and PostgreSQL, with HR analytics dashboards, employee reports and automated workflows.",
+    ],
+  },
+  {
     title: "Product Embeddings for Search Optimization",
     blurb:
       "Scraped and embedded 14k Amazon products across 5 categories, then benchmarked embedding models with a contrastive scoring metric.",
@@ -197,18 +237,6 @@ export const projects = [
       "Applied Pearson correlation, Kruskal–Wallis H-test, z-score, label encoding and IQR pruning on 3M records.",
       "Implemented a genetic algorithm for flight rescheduling using selection, crossover and mutation.",
       "Pulled data via API on AWS EC2 and added real-time weather with OpenCage; engineered season, traffic and time-of-day features.",
-    ],
-  },
-  {
-    title: "AI Conversation Chatbot",
-    blurb:
-      "An HR chatbot that reads sentiment from employee conversations and automates well-being reporting.",
-    tags: ["FastAPI", "PostgreSQL", "Transformers", "Next.js"],
-    points: [
-      "Developed an AI-powered HR chatbot using FastAPI, PostgreSQL and Hugging Face Transformers to analyze mood.",
-      "Built a Next.js front-end with ShadCN UI for an interactive, intuitive experience.",
-      "Optimized the backend around PostgreSQL for structured storage and efficient AI-powered querying.",
-      "Automated sentiment-based reporting to HR, giving real-time insight into employee well-being.",
     ],
   },
   {
@@ -239,8 +267,14 @@ export const projects = [
 
 export const highlights = [
   {
-    label: "Silver — Open IIT Data Analytics 2024",
-    detail: "Led a team of 20 at the IIT Kharagpur inter-hall competition.",
+    label: "Paper — IEEE GLOBECOM 2026 (SAC E-Health)",
+    detail:
+      "OmniMed-FL: A Robust Multimodal Federated Learning Framework for Clinical Diagnosis. 0.956 Macro-F1 under non-IID settings, retaining 99.1% of centralized performance.",
+  },
+  {
+    label: "Silver — Open IIT OpenSoft 2025",
+    detail:
+      "AI-powered HR chatbot for employee well-being monitoring, built with GPT-4, DistilBERT, SHAP, Next.js, FastAPI and PostgreSQL.",
   },
   {
     label: "Poster — CASML 2024, IISc Bangalore",
@@ -248,11 +282,15 @@ export const highlights = [
       "Presented on Physics-Informed Neural Networks at the International Conference on Applied AI and Scientific Machine Learning, with a pre-conference workshop.",
   },
   {
+    label: "Silver — Open IIT Data Analytics 2024",
+    detail: "Led a team of 20 at the IIT Kharagpur inter-hall competition.",
+  },
+  {
     label: "JEE Advanced 2022 — AIR 4708",
     detail: "Among 250,000+ Mains-qualified candidates.",
   },
   {
-    label: "JEE Mains 2022 — 99.1 percentile",
+    label: "JEE Main 2022 — 99.1 percentile",
     detail: "Top 1% among over 1,000,000 candidates nationally.",
   },
   {
@@ -268,7 +306,7 @@ export const highlights = [
 export const skills = [
   {
     group: "Languages",
-    items: ["Python", "C++", "C", "SQL", "JavaScript", "HTML", "CSS"],
+    items: ["Python", "C++", "C", "SQL", "JavaScript", "Dart", "HTML", "CSS"],
   },
   {
     group: "ML & Data",
@@ -276,11 +314,31 @@ export const skills = [
   },
   {
     group: "Web & Backend",
-    items: ["React", "Next.js", "Node.js", "FastAPI", "PostgreSQL", "MySQL", "MongoDB"],
+    items: [
+      "React",
+      "Next.js",
+      "Node.js",
+      "FastAPI",
+      "Flutter",
+      "Firebase",
+      "PostgreSQL",
+      "MySQL",
+      "MongoDB",
+    ],
   },
   {
     group: "Tools",
-    items: ["Git", "GitHub", "Docker", "AWS", "Jupyter", "MATLAB", "COMSOL", "SolidWorks"],
+    items: [
+      "Git",
+      "GitHub",
+      "Docker",
+      "AWS",
+      "Google Colab",
+      "Jupyter",
+      "MATLAB",
+      "COMSOL",
+      "SolidWorks",
+    ],
   },
 ];
 
@@ -303,7 +361,6 @@ export const coursework = [
       "AI Foundations and Applications",
       "Linear Algebra",
       "Soft Computing",
-      "Robotics",
     ],
   },
   {
@@ -312,14 +369,15 @@ export const coursework = [
       "Advanced Calculus",
       "Partial Differential Equations",
       "Transform Calculus",
-      "Theory of Computation",
+      "Automata Theory",
     ],
   },
   {
     group: "MOOCs",
     items: [
       "Neural Networks and Deep Learning",
-      "Improving Deep Neural Networks",
+      "Computer Vision",
+      "Physics-Informed Neural Networks",
       "Structuring ML Projects",
       "Building LLMs",
     ],
@@ -333,7 +391,7 @@ export const responsibility = [
     period: "Nov 2023 — Jun 2024",
     points: [
       "Worked with the hall council to organize and manage sports events within the hostel.",
-      "Managed a training budget, expanding the range of sports activities in the hall.",
+      "Managed a ₹10,000 training budget, expanding the range of sports activities in the hall.",
     ],
   },
 ];

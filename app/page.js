@@ -46,8 +46,7 @@ export default function Home() {
           <h1>{profile.name}</h1>
           <p className="hero-role">
             <strong>{profile.role}</strong>
-            {" · "}
-            Research intern at Purdue, Stanford &amp; CMU
+            {profile.headline ? <>{" · "}{profile.headline}</> : null}
           </p>
           <p className="hero-tagline">{profile.tagline}</p>
           <div className="hero-actions">
@@ -109,7 +108,7 @@ export default function Home() {
             {experience.map((x) => (
               <article
                 className={`exp${x.current ? " is-current" : ""}`}
-                key={`${x.org}-${x.title}`}
+                key={`${x.org}-${x.title}-${x.period}`}
               >
                 <div className="exp-top">
                   <h3 className="exp-title">
